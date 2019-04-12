@@ -22,7 +22,8 @@
         "phpunit/phpunit": "^7.4",
         "friendsofphp/php-cs-fixer": "^2.14",
         "symfony/expression-language": "^4.2",
-        "symfony/security-bundle": "^4.2"
+        "symfony/security-bundle": "^4.2",
+        "symfony/maker-bundle": "^1.11"
     },
     "autoload": {
         "psr-4": {
