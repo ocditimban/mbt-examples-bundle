@@ -6,6 +6,7 @@ use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Dunglas\DoctrineJsonOdm\Bundle\DunglasDoctrineJsonOdmBundle;
 use Oneup\FlysystemBundle\OneupFlysystemBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
+use Symfony\Bundle\MakerBundle\MakerBundle;
 use Symfony\Bundle\MonologBundle\MonologBundle;
 use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle;
@@ -25,6 +26,7 @@ class AppKernel extends Kernel
             new FrameworkBundle(),
             new DoctrineBundle(),
             new MonologBundle(),
+            new MakerBundle(),
             new DunglasDoctrineJsonOdmBundle(),
             new OneupFlysystemBundle(),
             new SwiftmailerBundle(),

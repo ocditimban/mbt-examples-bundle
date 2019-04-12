@@ -2,6 +2,15 @@
 
 This Bundle contains examples code for MBT Bundle.
 
+## Development
+
+Generate code
+```
+$ tests/app/bin/console make:generator name ClassName
+$ tests/app/bin/console make:subject name ClassName
+$ tests/app/bin/console make:reducer name ClassName
+```
+
 ## License
 
 This package is available under the [MIT license](LICENSE).

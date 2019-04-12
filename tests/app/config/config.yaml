@@ -17,3 +17,6 @@ security:
     firewalls:
         main:
             anonymous: ~
+
+maker:
+    root_namespace: 'Tienvx\Bundle\MbtExamplesBundle'
