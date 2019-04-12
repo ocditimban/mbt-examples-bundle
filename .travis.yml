@@ -1,0 +1,14 @@
+language: php
+
+php:
+  - 7.3
+
+install:
+  - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer install
+
+script:
+  - composer run-script cs-fix
+  - composer run-script test
+
+after_success:
+  - travis_retry composer run-script coverall

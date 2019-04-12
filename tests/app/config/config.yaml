@@ -1,0 +1,19 @@
+framework:
+    secret:          secret
+    test:            ~
+    router:          { resource: '%kernel.project_dir%/config/routing.yaml' }
+
+doctrine:
+    dbal:
+        driver: pdo_sqlite
+        path:   :memory:
+        memory: true
+    orm:
+        auto_mapping: true
+
+security:
+    providers:
+        in_memory: { memory: ~ }
+    firewalls:
+        main:
+            anonymous: ~

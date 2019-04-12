@@ -1,0 +1,10 @@
+oneup_flysystem:
+    adapters:
+        cloud:
+            awss3v3:
+                client: mbt.s3_client
+                bucket: ~
+                prefix: ~
+    filesystems:
+        mbt:
+            adapter: cloud
