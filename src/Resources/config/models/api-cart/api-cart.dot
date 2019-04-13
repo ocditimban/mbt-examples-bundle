@@ -1,0 +1,14 @@
+digraph workflow {
+  ratio="compress" rankdir="LR" label=""
+  node [fontsize="9" fontname="Arial" color="#333333" fillcolor="lightblue" fixedsize="false" width="1"];
+  edge [fontsize="9" fontname="Arial" color="#333333" arrowhead="normal" arrowsize="0.5"];
+
+  place_9d9f2ff112fdae743826cab85678ecc0b000c5af [label="unauthorized", shape=circle, style="filled"];
+  place_8b7c4985d61c3ec08e893b5ad433fe9613d66c7f [label="authorized", shape=circle];
+  place_9d9f2ff112fdae743826cab85678ecc0b000c5af -> place_8b7c4985d61c3ec08e893b5ad433fe9613d66c7f [label="login" style="solid"];
+  place_8b7c4985d61c3ec08e893b5ad433fe9613d66c7f -> place_8b7c4985d61c3ec08e893b5ad433fe9613d66c7f [label="products" style="solid"];
+  place_8b7c4985d61c3ec08e893b5ad433fe9613d66c7f -> place_8b7c4985d61c3ec08e893b5ad433fe9613d66c7f [label="add" style="solid"];
+  place_8b7c4985d61c3ec08e893b5ad433fe9613d66c7f -> place_8b7c4985d61c3ec08e893b5ad433fe9613d66c7f [label="edit" style="solid"];
+  place_8b7c4985d61c3ec08e893b5ad433fe9613d66c7f -> place_8b7c4985d61c3ec08e893b5ad433fe9613d66c7f [label="remove" style="solid"];
+}
+

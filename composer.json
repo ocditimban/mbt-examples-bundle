@@ -11,12 +11,14 @@
         }
     ],
     "require": {
+        "ext-json": "*",
         "tienvx/mbt-bundle": "^1.6",
         "symfony/yaml": "^4.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.4",
         "friendsofphp/php-cs-fixer": "^2.14",
+        "beberlei/assert": "^3.2",
         "symfony/expression-language": "^4.2",
         "symfony/security-bundle": "^4.2",
         "guzzlehttp/guzzle": "^6.3",
