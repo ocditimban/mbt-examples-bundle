@@ -7,13 +7,3 @@ services:
     Tienvx\Bundle\MbtExamplesBundle\:
         resource: '../../*'
         exclude: '../../Resources/'
-
-    mbt.s3_client:
-        class: Aws\S3\S3Client
-        arguments:
-            -
-                version: '2006-03-01' # or 'latest'
-                region: "region-id" # 'eu-central-1' for example
-                credentials:
-                    key: "s3-key"
-                    secret: "s3-secret"

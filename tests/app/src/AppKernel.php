@@ -9,7 +9,6 @@ use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\MakerBundle\MakerBundle;
 use Symfony\Bundle\MonologBundle\MonologBundle;
 use Symfony\Bundle\SecurityBundle\SecurityBundle;
-use Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use Tienvx\Bundle\MbtBundle\TienvxMbtBundle;
@@ -29,7 +28,6 @@ class AppKernel extends Kernel
             new MakerBundle(),
             new DunglasDoctrineJsonOdmBundle(),
             new OneupFlysystemBundle(),
-            new SwiftmailerBundle(),
             new TienvxMbtBundle(),
             new TienvxMbtExamplesBundle(),
         );
