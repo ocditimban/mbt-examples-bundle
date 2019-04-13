@@ -240,6 +240,11 @@ class ApiCart extends AbstractSubject
         return false;
     }
 
+    public function hasScreenshot($bugId, $index)
+    {
+        return $this->filesystem->has("{$bugId}/{$index}.txt");
+    }
+
     public function getScreenshot($bugId, $index)
     {
         try {
