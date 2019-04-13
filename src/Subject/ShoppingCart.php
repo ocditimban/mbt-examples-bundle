@@ -507,6 +507,7 @@ class ShoppingCart extends AbstractSubject
         $product = $this->data['product'];
         unset($this->cart[$product]);
         if (!$this->testingModel) {
+            // TODO id is not product id
             $this->client->findElement(WebDriverBy::cssSelector("button[onclick=\"cart.remove('$product');\"]"))->click();
         }
     }
@@ -524,6 +525,7 @@ class ShoppingCart extends AbstractSubject
         $quantity = rand(1, 99);
         $this->cart[$product] = $quantity;
         if (!$this->testingModel) {
+            // TODO id is not product id
             $this->client->findElement(WebDriverBy::cssSelector("input[name=\"quantity[$product]\"]"))->sendKeys($quantity);
             $this->client->findElement(WebDriverBy::cssSelector("input[name=\"quantity[$product]\"]+.input-group-btn>button[data-original-title=\"Update\"]"))->click();
         }

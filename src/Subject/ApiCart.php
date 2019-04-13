@@ -195,6 +195,7 @@ class ApiCart extends AbstractSubject
             'key' => $product,
         ]);
         Assertion::eq(200, $response->getStatusCode());
+        $this->cart[$product] = 1;
     }
 
     public function productHasBeenSelected()

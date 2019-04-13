@@ -1,0 +1,15 @@
+digraph workflow {
+  ratio="compress" rankdir="LR" label=""
+  node [fontsize="9" fontname="Arial" color="#333333" fillcolor="lightblue" fixedsize="false" width="1"];
+  edge [fontsize="9" fontname="Arial" color="#333333" arrowhead="normal" arrowsize="0.5"];
+
+  place_e83249bd3ba79932e16fb1fb5100dafade9954c2 [label="home", shape=circle, style="filled"];
+  place_8bfb4e1aa590eab8f08f837b97acf5803a5737ed [label="cart", shape=circle];
+  place_e83249bd3ba79932e16fb1fb5100dafade9954c2 -> place_e83249bd3ba79932e16fb1fb5100dafade9954c2 [label="add" style="solid"];
+  place_e83249bd3ba79932e16fb1fb5100dafade9954c2 -> place_e83249bd3ba79932e16fb1fb5100dafade9954c2 [label="wish" style="solid"];
+  place_e83249bd3ba79932e16fb1fb5100dafade9954c2 -> place_e83249bd3ba79932e16fb1fb5100dafade9954c2 [label="compare" style="solid"];
+  place_e83249bd3ba79932e16fb1fb5100dafade9954c2 -> place_8bfb4e1aa590eab8f08f837b97acf5803a5737ed [label="openCart" style="solid"];
+  place_8bfb4e1aa590eab8f08f837b97acf5803a5737ed -> place_e83249bd3ba79932e16fb1fb5100dafade9954c2 [label="closeCart" style="solid"];
+  place_8bfb4e1aa590eab8f08f837b97acf5803a5737ed -> place_8bfb4e1aa590eab8f08f837b97acf5803a5737ed [label="remove" style="solid"];
+}
+
