@@ -1,7 +1,9 @@
 {
     "name": "tienvx/mbt-examples-bundle",
-    "license": "MIT",
+    "type": "symfony-bundle",
     "description": "Contains examples how to use MBT Bundle",
+    "keywords": ["model based testing", "example code"],
+    "license": "MIT",
     "authors": [
         {
             "name": "tien.xuan.vo",
@@ -39,6 +41,11 @@
             "php tests/app/bin/console cache:clear --env=test --ansi",
             "php vendor/bin/phpunit --colors=always"
         ]
+    },
+    "conflict": {
+        "symfony/symfony": "*",
+        "symfony/twig-bundle": "<4.0",
+        "symfony/debug": "<4.0"
     },
     "extra": {
         "branch-alias": {
