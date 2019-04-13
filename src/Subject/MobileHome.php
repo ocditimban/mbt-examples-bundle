@@ -56,9 +56,6 @@ class MobileHome extends AbstractSubject
     {
         if (!$this->testingModel) {
             $caps = DesiredCapabilities::android();
-            $caps->setCapability('device', 'Samsung Galaxy S7 Edge');
-            $caps->setCapability('realMobile', 'true');
-            $caps->setCapability('os_version', '9.0');
             $this->client = Client::createSeleniumClient('http://hub:4444/wd/hub', $caps);
         }
         $this->goToHome();
