@@ -1,0 +1,20 @@
+@startuml
+allow_mixing
+title api_cart
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam state {
+    BackgroundColor<<initial>> #87b741
+    BackgroundColor<<marked>> #3887C6
+    BorderColor #3887C6
+    BorderColor<<marked>> Black
+    FontColor<<marked>> White
+}
+state "unauthorized" <<initial>>
+state "authorized"
+"unauthorized" --> "authorized": "login"
+"authorized" --> "authorized": "products"
+"authorized" --> "authorized": "add"
+"authorized" --> "authorized": "edit"
+"authorized" --> "authorized": "remove"
+@enduml
