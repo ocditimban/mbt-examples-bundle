@@ -30,7 +30,7 @@ class ApiCart extends AbstractSubject
     /**
      * @var string
      */
-    protected $url = 'http://example.com/index.php?route=';
+    protected $url = 'http://example.com';
 
     /**
      * @var array
@@ -120,7 +120,7 @@ class ApiCart extends AbstractSubject
      */
     public function login()
     {
-        $response = $this->client->request('POST', 'api/login', [
+        $response = $this->client->request('POST', '/index.php?route=api/login', [
             'username' => 'admin',
             'key' => 'admin',
         ]);
@@ -135,7 +135,7 @@ class ApiCart extends AbstractSubject
      */
     public function products()
     {
-        $response = $this->client->request('POST', 'api/cart/products&api_token='.$this->apiToken, []);
+        $response = $this->client->request('POST', '/index.php?route=api/cart/products&api_token='.$this->apiToken, []);
         Assertion::eq(200, $response->getStatusCode());
         $body = json_decode($response->getBody(), true);
 
@@ -154,7 +154,7 @@ class ApiCart extends AbstractSubject
         }
         $product = $this->data['product'];
         $quantity = rand(1, 9);
-        $response = $this->client->request('POST', 'api/cart/edit&api_token='.$this->apiToken, [
+        $response = $this->client->request('POST', '/index.php?route=api/cart/edit&api_token='.$this->apiToken, [
             'key' => $product,
             'quantity' => $quantity,
         ]);
@@ -173,7 +173,7 @@ class ApiCart extends AbstractSubject
             throw new Exception('Can not remove from cart: product is not selected');
         }
         $product = $this->data['product'];
-        $response = $this->client->request('POST', 'api/cart/remove&api_token='.$this->apiToken, [
+        $response = $this->client->request('POST', '/index.php?route=api/cart/remove&api_token='.$this->apiToken, [
             'key' => $product,
         ]);
         Assertion::eq(200, $response->getStatusCode());
@@ -191,7 +191,7 @@ class ApiCart extends AbstractSubject
             throw new Exception('Can not add to cart: product is not selected');
         }
         $product = $this->data['product'];
-        $response = $this->client->request('POST', 'api/cart/remove&api_token='.$this->apiToken, [
+        $response = $this->client->request('POST', '/index.php?route=api/cart/remove&api_token='.$this->apiToken, [
             'key' => $product,
         ]);
         Assertion::eq(200, $response->getStatusCode());
