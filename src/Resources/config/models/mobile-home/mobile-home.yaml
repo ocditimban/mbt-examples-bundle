@@ -1,0 +1,57 @@
+framework:
+    workflows:
+        # https://demo.opencart.com
+        mobile_home:
+            type: "state_machine"
+            supports:
+                - Tienvx\Bundle\MbtBundle\Subject\AbstractSubject
+            metadata:
+                label: "Mobile Home"
+                tags: ["opencart's shopping cart", "demo", "testing", "model-based-testing", "mobile", "android"]
+            places:
+                - home
+                - cart
+            initial_place: home
+            transitions:
+                add:
+                    from: home
+                    to: home
+                    guard: "subject.productHasBeenSelected() && subject.selectedProductCanBeAddedDirectly()"
+                    metadata:
+                        probability: 33
+                        label: "Add product to cart"
+                wish:
+                    from: home
+                    to: home
+                    guard: "subject.productHasBeenSelected()"
+                    metadata:
+                        probability: 33
+                        label: "Add product to wish list"
+                compare:
+                    from: home
+                    to: home
+                    guard: "subject.productHasBeenSelected()"
+                    metadata:
+                        probability: 33
+                        label: "Add product into product comparision"
+                openCart:
+                    from: home
+                    to: cart
+                    guard: "!cart.cartIsOpen()"
+                    metadata:
+                        probability: 33
+                        label: "Open cart"
+                closeCart:
+                    from: cart
+                    to: home
+                    guard: "cart.cartIsOpen()"
+                    metadata:
+                        probability: 33
+                        label: "Close cart"
+                remove:
+                    from: cart
+                    to: cart
+                    guard: "cart.cartIsOpen() && cart.cartHasProducts() && subject.productHasBeenSelected()"
+                    metadata:
+                        probability: 33
+                        label: "Remove product from cart"

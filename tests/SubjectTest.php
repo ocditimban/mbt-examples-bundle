@@ -5,6 +5,7 @@ namespace Tienvx\Bundle\MbtExamplesBundle\Tests;
 use Tienvx\Bundle\MbtBundle\Subject\SubjectManager;
 use Tienvx\Bundle\MbtExamplesBundle\Subject\ApiCart;
 use Tienvx\Bundle\MbtExamplesBundle\Subject\Checkout;
+use Tienvx\Bundle\MbtExamplesBundle\Subject\MobileHome;
 use Tienvx\Bundle\MbtExamplesBundle\Subject\Product;
 use Tienvx\Bundle\MbtExamplesBundle\Subject\ShoppingCart;
 
@@ -31,5 +32,6 @@ class SubjectTest extends TestCase
         $this->assertEquals(Product::class, $this->subjectManager->getSubject('product'));
         $this->assertEquals(ShoppingCart::class, $this->subjectManager->getSubject('shopping_cart'));
         $this->assertEquals(ApiCart::class, $this->subjectManager->getSubject('api_cart'));
+        $this->assertEquals(MobileHome::class, $this->subjectManager->getSubject('mobile_home'));
     }
 }

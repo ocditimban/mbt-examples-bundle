@@ -1,0 +1,21 @@
+@startuml
+allow_mixing
+title mobile_home
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam state {
+    BackgroundColor<<initial>> #87b741
+    BackgroundColor<<marked>> #3887C6
+    BorderColor #3887C6
+    BorderColor<<marked>> Black
+    FontColor<<marked>> White
+}
+state "home" <<initial>>
+state "cart"
+"home" --> "home": "add"
+"home" --> "home": "wish"
+"home" --> "home": "compare"
+"home" --> "cart": "openCart"
+"cart" --> "home": "closeCart"
+"cart" --> "cart": "remove"
+@enduml
