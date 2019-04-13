@@ -2,6 +2,7 @@
 
 namespace Tienvx\Bundle\MbtExamplesBundle\Subject;
 
+use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Symfony\Component\Process\Process;
 use Tienvx\Bundle\MbtExamplesBundle\Helper\ElementHelper;
 use Exception;
@@ -47,7 +48,12 @@ class Product extends AbstractSubject
     public function setUp()
     {
         if (!$this->testingModel) {
-            $this->client = Client::createChromeClient();
+            $caps = DesiredCapabilities::firefox();
+            $caps->setCapability(
+                'moz:firefoxOptions',
+                ['args' => ['-headless']]
+            );
+            $this->client = Client::createSeleniumClient('http://hub:4444/wd/hub', $caps);
         }
         $this->goToProduct($this->productId);
     }

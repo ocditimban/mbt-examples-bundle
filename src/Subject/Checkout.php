@@ -2,6 +2,8 @@
 
 namespace Tienvx\Bundle\MbtExamplesBundle\Subject;
 
+use Facebook\WebDriver\Chrome\ChromeOptions;
+use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Symfony\Component\Process\Process;
 use Tienvx\Bundle\MbtExamplesBundle\Helper\ElementHelper;
 use Exception;
@@ -56,7 +58,11 @@ class Checkout extends AbstractSubject
     public function setUp()
     {
         if (!$this->testingModel) {
-            $this->client = Client::createChromeClient();
+            $caps = DesiredCapabilities::chrome();
+            $options = new ChromeOptions();
+            $options->addArguments(['--headless', '--window-size=1200,1100', '--disable-gpu']);
+            $caps->setCapability(ChromeOptions::CAPABILITY, $options);
+            $this->client = Client::createSeleniumClient('http://hub:4444/wd/hub', $caps);
         }
         $this->goToHome();
     }
