@@ -30,10 +30,6 @@ class TienvxMbtExamplesExtension extends Extension implements PrependExtensionIn
     public function prepend(ContainerBuilder $container)
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('reporters.yaml');
-        $loader->load('filesystems.yaml');
-        $loader->load('models/checkout/checkout.yaml');
-        $loader->load('models/product/product.yaml');
-        $loader->load('models/shopping-cart/shopping-cart.yaml');
+        $loader->load('models.yaml');
     }
 }
