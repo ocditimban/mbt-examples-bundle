@@ -3,6 +3,8 @@
 namespace Tienvx\Bundle\MbtExamplesBundle\Subject;
 
 use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Facebook\WebDriver\Remote\WebDriverBrowserType;
+use Facebook\WebDriver\Remote\WebDriverCapabilityType;
 use Facebook\WebDriver\WebDriverBy;
 use Facebook\WebDriver\WebDriverExpectedCondition;
 use Exception;
@@ -55,7 +57,14 @@ class MobileHome extends AbstractSubject
     public function setUp()
     {
         if (!$this->testingModel) {
+            // # http://localhost:4444/grid/console
             $caps = DesiredCapabilities::android();
+            $caps->setCapability(WebDriverCapabilityType::BROWSER_NAME, WebDriverBrowserType::CHROME);
+            $caps->setCapability('deviceName', 'samsung_galaxy_s7_edge_9.0');
+            $caps->setCapability('maxInstances', 1);
+            $caps->setCapability('platformName', 'Android');
+            $caps->setCapability('seleniumProtocol', 'WebDriver');
+            $caps->setCapability('version', '9.0');
             $this->client = Client::createSeleniumClient('http://hub:4444/wd/hub', $caps);
         }
         $this->goToHome();
