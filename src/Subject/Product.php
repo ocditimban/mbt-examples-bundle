@@ -3,7 +3,6 @@
 namespace Tienvx\Bundle\MbtExamplesBundle\Subject;
 
 use Facebook\WebDriver\Remote\DesiredCapabilities;
-use Facebook\WebDriver\Remote\WebDriverBrowserType;
 use Facebook\WebDriver\Remote\WebDriverCapabilityType;
 use Facebook\WebDriver\WebDriverPlatform;
 use Symfony\Component\Process\Process;
@@ -51,13 +50,12 @@ class Product extends AbstractSubject
     public function setUp()
     {
         if (!$this->testingModel) {
-            $caps = new DesiredCapabilities();
-            $caps->setCapability(WebDriverCapabilityType::BROWSER_NAME, WebDriverBrowserType::FIREFOX);
+            $caps = DesiredCapabilities::firefox();
+            $caps->setCapability(WebDriverCapabilityType::PLATFORM, WebDriverPlatform::LINUX);
             $caps->setCapability(
                 'moz:firefoxOptions',
                 ['args' => ['-headless']]
             );
-            $caps->setCapability(WebDriverCapabilityType::W3C_PLATFORM, WebDriverPlatform::LINUX);
             $this->client = Client::createSeleniumClient('http://hub:4444/wd/hub', $caps);
         }
         $this->goToProduct($this->productId);

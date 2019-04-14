@@ -4,7 +4,6 @@ namespace Tienvx\Bundle\MbtExamplesBundle\Subject;
 
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
-use Facebook\WebDriver\Remote\WebDriverBrowserType;
 use Facebook\WebDriver\Remote\WebDriverCapabilityType;
 use Facebook\WebDriver\WebDriverPlatform;
 use Symfony\Component\Process\Process;
@@ -158,12 +157,11 @@ class ShoppingCart extends AbstractSubject
     public function setUp()
     {
         if (!$this->testingModel) {
-            $caps = new DesiredCapabilities();
-            $caps->setCapability(WebDriverCapabilityType::BROWSER_NAME, WebDriverBrowserType::CHROME);
+            $caps = DesiredCapabilities::chrome();
+            $caps->setCapability(WebDriverCapabilityType::PLATFORM, WebDriverPlatform::LINUX);
             $options = new ChromeOptions();
             $options->addArguments(['--headless', '--window-size=1200,1100', '--disable-gpu']);
             $caps->setCapability(ChromeOptions::CAPABILITY, $options);
-            $caps->setCapability(WebDriverCapabilityType::W3C_PLATFORM, WebDriverPlatform::LINUX);
             $this->client = Client::createSeleniumClient('http://hub:4444/wd/hub', $caps);
         }
         $this->goToHome();
