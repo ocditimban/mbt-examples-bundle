@@ -54,6 +54,7 @@ class Product extends AbstractSubject
             $caps = new DesiredCapabilities();
             $caps->setCapability(WebDriverCapabilityType::BROWSER_NAME, WebDriverBrowserType::FIREFOX);
             $caps->setCapability('platformName', WebDriverPlatform::LINUX);
+            $caps->setCapability('browserVersion', '66.0.1');
             $caps->setCapability(
                 'moz:firefoxOptions',
                 ['args' => ['-headless']]
