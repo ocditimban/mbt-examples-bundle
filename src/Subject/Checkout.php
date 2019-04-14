@@ -64,6 +64,7 @@ class Checkout extends AbstractSubject
             $caps = new DesiredCapabilities();
             $caps->setCapability(WebDriverCapabilityType::BROWSER_NAME, WebDriverBrowserType::CHROME);
             $caps->setCapability('platformName', WebDriverPlatform::LINUX);
+            $caps->setCapability('browserVersion', '73.0.3683.86');
             $options = new ChromeOptions();
             $options->addArguments(['--headless', '--window-size=1200,1100', '--disable-gpu']);
             $caps->setCapability(ChromeOptions::CAPABILITY, $options);
