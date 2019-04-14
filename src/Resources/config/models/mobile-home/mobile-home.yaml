@@ -37,21 +37,21 @@ framework:
                 openCart:
                     from: home
                     to: cart
-                    guard: "!cart.cartIsOpen()"
+                    guard: "!subject.cartIsOpen()"
                     metadata:
                         probability: 33
                         label: "Open cart"
                 closeCart:
                     from: cart
                     to: home
-                    guard: "cart.cartIsOpen()"
+                    guard: "subject.cartIsOpen()"
                     metadata:
                         probability: 33
                         label: "Close cart"
                 remove:
                     from: cart
                     to: cart
-                    guard: "cart.cartIsOpen() && cart.cartHasProducts() && subject.productHasBeenSelected()"
+                    guard: "subject.cartIsOpen() && subject.cartHasProducts() && subject.productHasBeenSelected()"
                     metadata:
                         probability: 33
                         label: "Remove product from cart"
