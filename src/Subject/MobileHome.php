@@ -2,6 +2,8 @@
 
 namespace Tienvx\Bundle\MbtExamplesBundle\Subject;
 
+use Facebook\WebDriver\Exception\NoSuchElementException;
+use Facebook\WebDriver\Exception\TimeOutException;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\WebDriverBrowserType;
 use Facebook\WebDriver\Remote\WebDriverCapabilityType;
@@ -54,6 +56,10 @@ class MobileHome extends AbstractSubject
         return 'mobile_home';
     }
 
+    /**
+     * @throws NoSuchElementException
+     * @throws TimeOutException
+     */
     public function setUp()
     {
         if (!$this->testingModel) {
@@ -75,10 +81,15 @@ class MobileHome extends AbstractSubject
         }
     }
 
+    /**
+     * @throws NoSuchElementException
+     * @throws TimeOutException
+     */
     private function goToHome()
     {
         if (!$this->testingModel) {
             $this->client->get($this->url);
+            $this->client->waitFor('#common-home', 30);
         }
     }
 
