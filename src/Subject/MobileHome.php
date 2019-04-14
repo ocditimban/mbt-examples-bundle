@@ -58,16 +58,9 @@ class MobileHome extends AbstractSubject
     {
         if (!$this->testingModel) {
             // # http://localhost:4444/grid/console
-            // TODO Remove the patch once https://github.com/facebook/php-webdriver/pull/599 or
-            // https://github.com/facebook/php-webdriver/pull/560 is merged
-            // @see https://github.com/facebook/php-webdriver/issues/469
             $caps = DesiredCapabilities::android();
             $caps->setCapability(WebDriverCapabilityType::BROWSER_NAME, WebDriverBrowserType::CHROME);
-            $caps->setCapability('deviceName', 'samsung_galaxy_s7_edge_9.0');
-            $caps->setCapability('maxInstances', 1);
-            $caps->setCapability('platformName', 'Android');
-            $caps->setCapability('seleniumProtocol', 'WebDriver');
-            $caps->setCapability('version', '9.0');
+            $caps->setCapability(WebDriverCapabilityType::W3C_PLATFORM, 'Android');
             $this->client = Client::createSeleniumClient('http://hub:4444/wd/hub', $caps);
         }
         $this->goToHome();
