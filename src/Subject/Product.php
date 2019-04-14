@@ -3,6 +3,8 @@
 namespace Tienvx\Bundle\MbtExamplesBundle\Subject;
 
 use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Facebook\WebDriver\Remote\WebDriverCapabilityType;
+use Facebook\WebDriver\WebDriverPlatform;
 use Symfony\Component\Process\Process;
 use Tienvx\Bundle\MbtExamplesBundle\Helper\ElementHelper;
 use Exception;
@@ -48,14 +50,12 @@ class Product extends AbstractSubject
     public function setUp()
     {
         if (!$this->testingModel) {
-            // TODO Remove the patch once https://github.com/facebook/php-webdriver/pull/599 or
-            // https://github.com/facebook/php-webdriver/pull/560 is merged
-            // @see https://github.com/facebook/php-webdriver/issues/469
             $caps = DesiredCapabilities::firefox();
             $caps->setCapability(
                 'moz:firefoxOptions',
                 ['args' => ['-headless']]
             );
+            $caps->setCapability(WebDriverCapabilityType::W3C_PLATFORM, WebDriverPlatform::LINUX);
             $this->client = Client::createSeleniumClient('http://hub:4444/wd/hub', $caps);
         }
         $this->goToProduct($this->productId);
