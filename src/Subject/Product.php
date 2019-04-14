@@ -2,7 +2,6 @@
 
 namespace Tienvx\Bundle\MbtExamplesBundle\Subject;
 
-use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Symfony\Component\Process\Process;
 use Tienvx\Bundle\MbtExamplesBundle\Helper\ElementHelper;
@@ -49,22 +48,14 @@ class Product extends AbstractSubject
     public function setUp()
     {
         if (!$this->testingModel) {
-            // TODO: Replace chrome by firefox when w3c is implemented in facebook webdriver:
-            // https://github.com/mozilla/geckodriver/issues/1529
-            // https://github.com/SeleniumHQ/docker-selenium/issues/651
-            // https://github.com/facebook/php-webdriver/issues/525
-            // https://github.com/facebook/php-webdriver/issues/469
-            // https://github.com/SeleniumHQ/docker-selenium/issues/858
-            //
-            //$caps = DesiredCapabilities::firefox();
-            //$caps->setCapability(
-            //    'moz:firefoxOptions',
-            //    ['args' => ['-headless']]
-            //);
-            $caps = DesiredCapabilities::chrome();
-            $options = new ChromeOptions();
-            $options->addArguments(['--headless', '--window-size=1200,1100', '--disable-gpu']);
-            $caps->setCapability(ChromeOptions::CAPABILITY, $options);
+            // TODO Remove the patch once https://github.com/facebook/php-webdriver/pull/599 or
+            // https://github.com/facebook/php-webdriver/pull/560 is merged
+            // @see https://github.com/facebook/php-webdriver/issues/469
+            $caps = DesiredCapabilities::firefox();
+            $caps->setCapability(
+                'moz:firefoxOptions',
+                ['args' => ['-headless']]
+            );
             $this->client = Client::createSeleniumClient('http://hub:4444/wd/hub', $caps);
         }
         $this->goToProduct($this->productId);
