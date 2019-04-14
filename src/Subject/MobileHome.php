@@ -61,6 +61,8 @@ class MobileHome extends AbstractSubject
             $caps = new DesiredCapabilities();
             $caps->setCapability(WebDriverCapabilityType::BROWSER_NAME, WebDriverBrowserType::CHROME);
             $caps->setCapability(WebDriverCapabilityType::W3C_PLATFORM, 'Android');
+            $caps->setCapability('deviceName', 'Samsung Galaxy S7 Edge');
+            $caps->setCapability(WebDriverCapabilityType::W3C_VERSION, '9.0');
             $this->client = Client::createSeleniumClient('http://hub:4444/wd/hub', $caps);
         }
         $this->goToHome();
