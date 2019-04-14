@@ -58,7 +58,7 @@ class MobileHome extends AbstractSubject
     {
         if (!$this->testingModel) {
             // # http://localhost:4444/grid/console
-            $caps = DesiredCapabilities::android();
+            $caps = new DesiredCapabilities();
             $caps->setCapability(WebDriverCapabilityType::BROWSER_NAME, WebDriverBrowserType::CHROME);
             $caps->setCapability(WebDriverCapabilityType::W3C_PLATFORM, 'Android');
             $this->client = Client::createSeleniumClient('http://hub:4444/wd/hub', $caps);

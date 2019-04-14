@@ -3,6 +3,7 @@
 namespace Tienvx\Bundle\MbtExamplesBundle\Subject;
 
 use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Facebook\WebDriver\Remote\WebDriverBrowserType;
 use Facebook\WebDriver\Remote\WebDriverCapabilityType;
 use Facebook\WebDriver\WebDriverPlatform;
 use Symfony\Component\Process\Process;
@@ -50,7 +51,8 @@ class Product extends AbstractSubject
     public function setUp()
     {
         if (!$this->testingModel) {
-            $caps = DesiredCapabilities::firefox();
+            $caps = new DesiredCapabilities();
+            $caps->setCapability(WebDriverCapabilityType::BROWSER_NAME, WebDriverBrowserType::FIREFOX);
             $caps->setCapability(
                 'moz:firefoxOptions',
                 ['args' => ['-headless']]
