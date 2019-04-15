@@ -16,42 +16,42 @@ framework:
                 add:
                     from: home
                     to: home
-                    guard: "subject.productHasBeenSelected() && subject.selectedProductCanBeAddedDirectly()"
+                    guard: "subject.productHasBeenSelected()"
                     metadata:
-                        probability: 33
+                        probability: 25
                         label: "Add product to cart"
                 wish:
                     from: home
                     to: home
                     guard: "subject.productHasBeenSelected()"
                     metadata:
-                        probability: 33
+                        probability: 25
                         label: "Add product to wish list"
                 compare:
                     from: home
                     to: home
                     guard: "subject.productHasBeenSelected()"
                     metadata:
-                        probability: 33
+                        probability: 25
                         label: "Add product into product comparision"
                 openCart:
                     from: home
                     to: cart
                     guard: "!subject.cartIsOpen()"
                     metadata:
-                        probability: 33
+                        probability: 25
                         label: "Open cart"
                 closeCart:
                     from: cart
                     to: home
                     guard: "subject.cartIsOpen()"
                     metadata:
-                        probability: 33
+                        probability: 50
                         label: "Close cart"
                 remove:
                     from: cart
                     to: cart
                     guard: "subject.cartIsOpen() && subject.cartHasProducts() && subject.productHasBeenSelected()"
                     metadata:
-                        probability: 33
+                        probability: 50
                         label: "Remove product from cart"
