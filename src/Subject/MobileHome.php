@@ -242,7 +242,7 @@ class MobileHome extends AbstractSubject
     {
         do {
             $product = $this->products[array_rand($this->products)];
-        } while (42 != $product);
+        } while (42 == $product);
 
         return ['product' => $product];
     }
