@@ -8,6 +8,7 @@ use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\WebDriverBrowserType;
 use Facebook\WebDriver\Remote\WebDriverCapabilityType;
 use Facebook\WebDriver\WebDriverBy;
+use Facebook\WebDriver\WebDriverElement;
 use Facebook\WebDriver\WebDriverExpectedCondition;
 use Exception;
 use Symfony\Component\Panther\Client;
@@ -135,6 +136,7 @@ class MobileHome extends AbstractSubject
             );
             $element = $this->client->findElement($by);
             $element->click();
+            $this->closeAlerts();
         }
     }
 
@@ -155,6 +157,7 @@ class MobileHome extends AbstractSubject
             );
             $element = $this->client->findElement($by);
             $element->click();
+            $this->closeAlerts();
         }
     }
 
@@ -170,6 +173,7 @@ class MobileHome extends AbstractSubject
             );
             $element = $this->client->findElement($by);
             $element->click();
+            $this->closeAlerts();
         }
         $this->cartOpen = true;
     }
@@ -251,6 +255,22 @@ class MobileHome extends AbstractSubject
         $product = array_rand($this->cart);
 
         return ['product' => $product];
+    }
+
+    /**
+     * @throws NoSuchElementException
+     * @throws TimeOutException
+     */
+    public function closeAlerts()
+    {
+        if (!$this->testingModel) {
+            $this->client->waitFor('.alert', 3);
+            /** @var WebDriverElement[] $elements */
+            $elements = $this->client->findElements(WebDriverBy::cssSelector('.alert > .close'));
+            foreach ($elements as $element) {
+                $element->click();
+            }
+        }
     }
 
     public function getScreenshotUrl($bugId, $index)
