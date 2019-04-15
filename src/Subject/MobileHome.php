@@ -95,7 +95,7 @@ class MobileHome extends AbstractSubject
 
     /**
      * @throws Exception
-     * @DataProvider(method="getRandomProductFromHome")
+     * @DataProvider(method="getRandomProductFromHomeCanBeAddDirectly")
      */
     public function add()
     {
@@ -217,11 +217,6 @@ class MobileHome extends AbstractSubject
         return !empty($this->data['product']);
     }
 
-    public function selectedProductCanBeAddedDirectly()
-    {
-        return 42 != $this->data['product'];
-    }
-
     public function cartHasProducts()
     {
         return !empty($this->cart);
@@ -235,6 +230,15 @@ class MobileHome extends AbstractSubject
     public function getRandomProductFromHome()
     {
         $product = $this->products[array_rand($this->products)];
+
+        return ['product' => $product];
+    }
+
+    public function getRandomProductFromHomeCanBeAddDirectly()
+    {
+        do {
+            $product = $this->products[array_rand($this->products)];
+        } while (42 != $product);
 
         return ['product' => $product];
     }
