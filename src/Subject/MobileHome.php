@@ -69,9 +69,6 @@ class MobileHome extends AbstractSubject
             $caps->setCapability('platformName', 'Android');
             $caps->setCapability('deviceName', 'Samsung Galaxy S7 Edge');
             $caps->setCapability('browserVersion', '9.0');
-            // Fix 'Argument to isShown must be of type Element'
-            // @see https://github.com/appium/appium/issues/11510#issuecomment-428818501
-            $caps->setCapability('forceMjsonwp', true);
             $this->client = Client::createSeleniumClient('http://hub:4444/wd/hub', $caps);
         }
         $this->goToHome();
