@@ -8,4 +8,3 @@ composer.lock
 # Ignore files created during tests
 /tests/app/var/cache/
 /tests/app/var/log/
-/tests/app/var/screenshots/

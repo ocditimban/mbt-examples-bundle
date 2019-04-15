@@ -8,7 +8,7 @@
     </php>
 
     <testsuites>
-        <testsuite name="MbtBundle test suite">
+        <testsuite name="MbtExamplesBundle test suite">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
