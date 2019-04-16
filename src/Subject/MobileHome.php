@@ -12,6 +12,7 @@ use Facebook\WebDriver\WebDriverElement;
 use Facebook\WebDriver\WebDriverExpectedCondition;
 use Exception;
 use Symfony\Component\Panther\Client;
+use Symfony\Component\Process\Process;
 use Tienvx\Bundle\MbtBundle\Annotation\DataProvider;
 use Tienvx\Bundle\MbtBundle\Subject\AbstractSubject;
 
@@ -271,6 +272,19 @@ class MobileHome extends AbstractSubject
                 $element->click();
             }
         }
+    }
+
+    public function captureScreenshot($bugId, $index)
+    {
+        $this->client->takeScreenshot('/tmp/screenshot.png');
+
+        $process = Process::fromShellCommandline('pngquant --quality=60-90 - < /tmp/screenshot.png');
+        $process->run();
+
+        $image = $process->getOutput();
+        $this->filesystem->put("{$bugId}/{$index}.png", $image);
+
+        unlink('/tmp/screenshot.png');
     }
 
     public function getScreenshotUrl($bugId, $index)
