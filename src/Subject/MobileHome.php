@@ -116,6 +116,7 @@ class MobileHome extends AbstractSubject
             );
             $element = $this->client->findElement($by);
             $element->click();
+            $this->closeAlerts();
         }
     }
 
@@ -173,7 +174,6 @@ class MobileHome extends AbstractSubject
             );
             $element = $this->client->findElement($by);
             $element->click();
-            $this->closeAlerts();
         }
         $this->cartOpen = true;
     }
